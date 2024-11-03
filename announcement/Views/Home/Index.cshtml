@@ -1,0 +1,40 @@
+﻿@{
+    ViewData["Title"] = "Announcements";
+}
+
+<h2>Announcements</h2>
+
+<!-- Success Message -->
+@if (TempData["SuccessMessage"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["SuccessMessage"]
+    </div>
+}
+
+<p>Total Announcements: @Model.Count</p>
+<p>Current Date and Time: @DateTime.Now.ToLocalTime().ToString("dd/MM/yyyy HH:mm")</p>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Responsible Person</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var announcement in Model)
+        {
+            <tr>
+                <td>@announcement.Title</td>
+                <td>@announcement.ResponsiblePerson</td>
+                <td>
+                    <a asp-controller="Home" asp-action="Details" asp-route-id="@announcement.Id" class="btn btn-warning">Details</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-controller="Add" asp-action="AddAnnouncement" class="btn btn-primary">Add New Announcement</a>

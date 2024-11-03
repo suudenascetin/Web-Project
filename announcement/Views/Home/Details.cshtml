@@ -1,0 +1,16 @@
+@model Homework1.Models.Anno
+
+@{
+    ViewData["Title"] = "Announcement Details";
+}
+
+<h2>Announcement Details</h2>
+
+<div>
+    <h3>@Model.Title</h3>
+    <p><strong>Text:</strong> @Model.Text</p>
+    <p><strong>Responsible Person:</strong> @Model.ResponsiblePerson</p>
+    <p><strong>Date Added:</strong> @Model.AddAnn.ToString("dd MMM yyyy, HH:mm")</p>
+</div>
+
+<a class="btn btn-primary" href="/">Back to Announcements</a>
